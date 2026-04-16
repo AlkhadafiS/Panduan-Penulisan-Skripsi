@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Penulisan Skripsi</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'>
+    <path d='M4 19.5A2.5 2.5 0 016.5 17H20'/>
+    <path d='M6.5 2H20v15H6.5A2.5 2.5 0 004 19.5V4.5A2.5 2.5 0 016.5 2z'/>
+  </svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #modalContent::-webkit-scrollbar {
+      width: 6px;
+    }
+    #modalContent::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 via-indigo-100 to-gray-200 min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-6">
+
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-gray-800 mb-2">
+        Panduan Penulisan Skripsi
+      </h1>
+      <p class="text-gray-600 text-lg">
+        Panduan Cara Penulisan Skripsi yang Baik dan Benar.
+      </p>
+    </div>
+
+    <!-- Search -->
+    <div class="mb-8 flex justify-center">
+      <input 
+        type="text" 
+        id="search"
+        placeholder="Cari topik..." 
+        class="w-full md:w-2/3 p-4 rounded-2xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+      >
+    </div>
+
+    <!-- Grid -->
+    <div id="topics" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-xl relative">
+
+      <div class="p-6 border-b">
+        <button onclick="closeModal()" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">✖</button>
+        <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+      </div>
+
+      <div id="modalContent" class="p-6 overflow-y-auto text-gray-600 leading-relaxed text-justify"></div>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="text-center mt-16 px-4">
+    <p class="text-gray-600 italic text-sm md:text-base lg:text-base max-w-2xl mx-auto">
+      "Skripsi yang bagus tidak harus skripsi yang sulit, skripsi yang bagus adalah skripsi yang selesai."
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center mt-10 pb-6">
+    <p class="text-gray-500 text-sm">
+      © 2026 alkhdf. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- ✅ Scroll To Top Button -->
+    <button id="scrollTopBtn"
+    class="fixed bottom-6 right-6 hidden bg-indigo-600/80 text-white w-12 h-12 rounded-full shadow-lg backdrop-blur hover:bg-indigo-500 transition flex items-center justify-center">
+    ⌃
+    </button>
+
+  <script>
+    const topics = [
+      { 
+        title: "Cara Penulisan", 
+        desc: "Panduan cara penulisan skripsi sesuai ketentuan Universitas Lampung.", 
+        icon: "📚",
+        content: `
+        Dalam penulisan skripsi, mahasiswa wajib terlebih dahulu membaca dan memahami pedoman Karya Tulis Ilmiah (KTI) Universitas Lampung sebagai acuan utama. Setiap penulisan harus memperhatikan kaidah bahasa yang baik dan benar, terutama dalam penggunaan huruf kapital dan tanda baca. Awal kalimat harus selalu menggunakan huruf besar dan tidak diperkenankan diawali dengan kata hubung. Selain itu, penggunaan bahasa asing dalam penulisan harus ditulis dengan format <i>italic</i>, termasuk pada bagian sitasi seperti penulisan <i>et al.</i> yang juga wajib menggunakan gaya <i>italic</i>.
+        <br><br>
+        Seiring perkembangan teknologi, penggunaan kecerdasan buatan (AI) dalam membantu penulisan sudah diperbolehkan. Namun, mahasiswa tetap harus memahami isi dan konteks dari materi yang dihasilkan, serta melakukan parafrase dengan baik agar tidak terkesan hanya menyalin tanpa pemahaman. Hindari kebiasaan <i>copy-paste</i> tanpa analisis, karena hal ini dapat berdampak pada kualitas tulisan dan integritas akademik.
+        <br><br>
+        Selain itu, penulisan struktur seperti subbab dan turunannya harus dilakukan secara konsisten sejak awal hingga akhir. Disarankan menggunakan sistem penomoran (angka) dibandingkan simbol agar lebih rapi, sistematis, dan sesuai dengan standar penulisan ilmiah.
+        <br><br>
+        Dalam penggunaan sitasi, sangat disarankan untuk menggunakan sumber dari 10 tahun terakhir agar informasi yang disajikan tetap relevan dengan perkembangan ilmu pengetahuan terkini. Penggunaan sumber yang terlalu lama sebaiknya dihindari kecuali benar-benar diperlukan, misalnya untuk teori dasar. Selain itu, sitasi dari sumber yang tidak kredibel seperti blog atau website umum sangat tidak dianjurkan, sehingga mahasiswa disarankan menggunakan jurnal ilmiah, prosiding, atau buku akademik sebagai referensi utama.
+        `
+      },
+      { 
+        title: "BAB I - Pendahuluan", 
+        desc: "Panduan cara penulisan bagian Pendahuluan.", 
+        icon: "📝",
+        content: `
+        BAB I Pendahuluan terdiri dari lima subbab utama, yaitu latar belakang, rumusan masalah, batasan masalah, tujuan, dan manfaat. Pada subbab latar belakang, penulis menjelaskan alasan mengapa topik penelitian tersebut diangkat menjadi sebuah skripsi. Umumnya, paragraf pertama berisi gambaran permasalahan yang terjadi di lapangan. Paragraf kedua menjelaskan mengapa permasalahan tersebut penting dan perlu untuk diperhatikan. Paragraf ketiga memuat urgensi penelitian, yaitu alasan kuat mengapa penulis ingin memberikan solusi terhadap permasalahan tersebut.
+        <br><br>
+        Paragraf keempat dan seterusnya disesuaikan dengan konteks penelitian, misalnya dengan membahas teori pendukung atau kondisi terkait topik yang diangkat. Penjelasan dalam latar belakang harus disampaikan secara rinci dan mendalam, serta tidak ragu untuk menggunakan sitasi, karena pada dasarnya isi tulisan ilmiah banyak terinspirasi dari penelitian atau sumber lain. Pada bagian akhir latar belakang, biasanya ditutup dengan gambaran singkat mengenai hasil yang diharapkan dari penelitian yang dilakukan, sekaligus menyinggung manfaatnya secara umum, yang nantinya akan dijelaskan lebih rinci pada subbab manfaat.
+        <br><br>
+        Subbab rumusan masalah berisi pertanyaan penelitian yang menjadi fokus utama dalam skripsi. Penulisannya umumnya menggunakan format seperti: “Rumusan masalah dalam penelitian ini yaitu, bagaimana …”. Selanjutnya, subbab batasan masalah menjelaskan ruang lingkup penelitian yang dilakukan, seperti metode yang digunakan, alat yang dipakai, jenis data, serta jumlah data yang dianalisis, yang semuanya disesuaikan dengan tema penelitian.
+        <br><br>
+        Subbab tujuan berisi pernyataan mengenai apa yang ingin dicapai dari penelitian tersebut, biasanya menggunakan format: “Tujuan dari penelitian ini adalah untuk …”. Terakhir, subbab manfaat menjelaskan kegunaan dari penelitian yang dilakukan, baik untuk pengembangan ilmu pengetahuan, masyarakat, maupun instansi terkait.
+        `
+      },
+      { 
+        title: "BAB II - Tinjauan Pustaka", 
+        desc: "Panduan cara penulisan bagian Tinjauan Pustaka.", 
+        icon: "📖", 
+        content: `
+        BAB II umumnya diawali dengan subbab penelitian terdahulu atau penelitian terkait. Subbab ini berisi berbagai penelitian sebelumnya yang menjadi acuan atau memiliki keterkaitan dengan topik yang diangkat. Semakin banyak penelitian terdahulu yang relevan, maka akan semakin baik, karena menunjukkan bahwa penelitian yang dilakukan memiliki dasar yang kuat. Disarankan untuk menggunakan referensi dari penelitian internasional, meskipun penelitian lokal juga tetap dapat digunakan.
+        <br><br>
+        Setiap penelitian yang dicantumkan harus dijelaskan secara ringkas namun jelas, sebagai bukti bahwa penulis telah membaca dan memahami isi penelitian tersebut, sehingga pembaca juga dapat mengetahui alasan mengapa penelitian tersebut dijadikan rujukan dalam skripsi.
+        <br><br>
+        Selanjutnya, BAB II akan membahas secara menyeluruh mengenai konsep, teori, dan hal-hal yang berkaitan dengan topik penelitian. Setiap istilah, metode, atau konsep yang digunakan harus dijelaskan secara rinci dan mendalam. Penulis tidak disarankan untuk menuliskan suatu hal tanpa memberikan penjelasan yang jelas mengenai pengertiannya.
+        <br><br>
+        Oleh karena itu, penggunaan sitasi menjadi sangat penting untuk mendukung setiap penjelasan yang diberikan. Pembahasan dalam BAB II sebaiknya dilakukan secara komprehensif hingga ke dasar atau akar dari konsep yang digunakan, sehingga tidak hanya bersifat permukaan.
+        <br><br>
+        Hal ini bertujuan agar pembaca dapat memahami secara utuh mengenai topik yang diteliti. Dengan demikian, penulis diharapkan mampu menyusun tinjauan pustaka yang informatif, sistematis, dan mampu memberikan gambaran yang jelas mengenai landasan teori dalam penelitian yang dilakukan.
+        `
+      },
+      { 
+        title: "BAB III - Metodologi Penelitian", 
+        desc: "Panduan cara penulisan bagian Metodologi Penelitian.", 
+        icon: "🔬", 
+        content: `
+        BAB III umumnya diawali dengan subbab waktu dan tempat penelitian. Pada bagian ini, penulis menjelaskan kapan dan di mana penelitian dilakukan. Subbab ini biasanya dapat dipecah kembali menjadi dua bagian, yaitu waktu penelitian dan tempat penelitian.
+        <br><br>
+        Penjelasan mengenai waktu penelitian dapat disampaikan dengan kalimat yang sederhana, serta didukung dengan tabel jadwal penelitian agar pembaca dapat mengetahui secara jelas rentang waktu pelaksanaan penelitian, mulai dari awal hingga selesai. Sementara itu, pada bagian tempat penelitian, penulis menjelaskan lokasi atau tempat dilakukannya penelitian secara rinci.
+        <br><br>
+        Selanjutnya, terdapat subbab alat dan bahan yang juga dapat dipecah menjadi beberapa subbagian. Pada subbab alat, penulisan umumnya dipisahkan menjadi perangkat keras (<i>hardware</i>) dan perangkat lunak (<i>software</i>). Pada masing-masing bagian tersebut, penulis harus menjelaskan secara rinci alat yang digunakan selama penelitian, baik berupa spesifikasi perangkat keras maupun perangkat lunak yang mendukung proses penelitian. Adapun pada subbab bahan, penulis menjelaskan bahan atau data yang digunakan selama penelitian berlangsung.
+        <br><br>
+        Subbab berikutnya adalah metodologi penelitian, yang merupakan bagian penting dalam skripsi. Pada bagian ini, penulis menjelaskan tahapan-tahapan penelitian yang dilakukan secara sistematis dan terstruktur. Untuk mempermudah pemahaman, penulis dapat menggunakan diagram atau gambar alur penelitian sebagai pendukung penjelasan. Struktur subbab pada metodologi penelitian dapat disesuaikan dengan topik yang diangkat, sehingga tidak bersifat kaku.
+        <br><br>
+        Seluruh penjelasan dalam BAB III harus disampaikan secara rinci dan jelas. Penulis tidak disarankan untuk menjelaskan secara singkat tanpa uraian yang memadai. Selain itu, penggunaan sitasi tetap dianjurkan apabila terdapat metode atau konsep yang diambil dari sumber lain, sehingga penelitian yang dilakukan memiliki dasar yang kuat dan dapat dipertanggungjawabkan secara ilmiah.
+        `
+      },
+      { 
+        title: "BAB IV - Pembahasan", 
+        desc: "Panduan cara penulisan bagian Pembahasan.", 
+        icon: "📊", 
+        content: `
+        BAB IV berisi pembahasan dari penelitian yang telah dilakukan. Struktur penulisan pada bab ini dapat menyesuaikan dengan arahan dosen pembimbing, di mana beberapa penulis memilih untuk menjelaskan proses terlebih dahulu kemudian hasil, atau sebaliknya. Pada panduan ini digunakan pendekatan dengan menyajikan hasil terlebih dahulu, kemudian diikuti dengan pembahasan proses penelitian.
+        <br><br>
+        Subbab pertama yaitu hasil penelitian. Pada bagian ini, penulis menjelaskan hasil yang diperoleh selama proses penelitian. Paragraf awal biasanya berisi gambaran umum mengenai hasil yang telah didapatkan. Penjelasan dapat dilengkapi dengan tabel, grafik, atau gambar untuk memperjelas hasil yang diperoleh sehingga pembaca dapat dengan mudah memahami temuan penelitian.
+        <br><br>
+        Selanjutnya, subbab kedua yaitu pembahasan. Pada bagian ini, penulis menjelaskan secara rinci bagaimana hasil pada subbab sebelumnya diperoleh. Penulis harus menguraikan langkah-langkah atau proses yang dilakukan hingga menghasilkan temuan tersebut. Penjelasan harus disampaikan secara jelas, sistematis, dan mudah dipahami agar pembaca dapat mengikuti alur penelitian yang dilakukan.
+        <br><br>
+        Subbab turunan dalam pembahasan dapat disesuaikan dengan topik penelitian yang diangkat. Tidak ada struktur baku yang mengikat, namun yang terpenting adalah setiap bagian dijelaskan secara rinci dan tidak setengah-setengah. Penulis diharapkan mampu menjelaskan seluruh proses dan hasil penelitian secara mendalam, sehingga pembaca benar-benar memahami bagaimana penelitian tersebut dilakukan dan apa yang dihasilkan.
+        `
+      },
+      { 
+        title: "BAB V - Kesimpulan dan Saran", 
+        desc: "Panduan cara penulisan bagian Kesimpulan dan Saran.", 
+        icon: "🎯", 
+        content: `
+        BAB V merupakan bagian penutup yang terdiri dari dua subbab utama, yaitu kesimpulan dan saran. Pada subbab kesimpulan, penulis menyajikan ringkasan dari hasil penelitian yang telah dilakukan. Kesimpulan harus disampaikan secara jelas, singkat, dan tidak bertele-tele. Penulisan kesimpulan harus tetap fokus pada hasil penelitian dan tidak keluar dari konteks yang telah dibahas sebelumnya.
+        <br><br>
+        Hal yang paling penting, kesimpulan wajib mampu menjawab rumusan masalah yang telah ditetapkan pada BAB I. Apabila kesimpulan tidak menjawab rumusan masalah, maka dapat dikatakan bahwa penelitian yang dilakukan belum mencapai tujuan yang diharapkan.
+        <br><br>
+        Selanjutnya, subbab saran berisi rekomendasi yang diberikan oleh penulis berdasarkan hasil penelitian yang telah dilakukan. Saran ini dapat ditujukan untuk pengembangan penelitian di masa yang akan datang, baik berupa perbaikan metode, penambahan data, maupun pengembangan topik yang lebih luas. Dengan adanya saran, diharapkan penelitian yang telah dilakukan dapat menjadi dasar atau referensi bagi penelitian selanjutnya agar dapat menghasilkan hasil yang lebih baik.
+        `
+      }
+    ];
+
+    const container = document.getElementById("topics");
+    const searchInput = document.getElementById("search");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+
+    function openModal(title, content) {
+      modalTitle.innerText = title;
+      modalContent.innerHTML = content;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeModal() {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    function render(data) {
+      container.innerHTML = "";
+      data.forEach(item => {
+        container.innerHTML += `
+          <div class="bg-white/80 backdrop-blur p-5 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200">
+            <div class="text-3xl mb-3">${item.icon}</div>
+            <h2 class="text-xl font-semibold mb-2 text-gray-800">
+              ${item.title}
+            </h2>
+            <p class="text-gray-600 mb-4">
+              ${item.desc}
+            </p>
+            <button onclick="openModal('${item.title}', \`${item.content}\`)" 
+              class="text-sm font-medium px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition">
+              Baca Selengkapnya
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    searchInput.addEventListener("input", function() {
+      const keyword = this.value.toLowerCase();
+      const filtered = topics.filter(t => 
+        t.title.toLowerCase().includes(keyword)
+      );
+      render(filtered);
+    });
+
+    render(topics);
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (scrollTop + windowHeight >= docHeight - 50) {
+        scrollTopBtn.classList.remove("hidden");
+      } else {
+        scrollTopBtn.classList.add("hidden");
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>
